@@ -2,8 +2,6 @@ package br.org.generation.blogpessoal.controller;
 
 import java.util.List;
 
-
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +21,8 @@ import br.org.generation.blogpessoal.model.Postagem;
 import br.org.generation.blogpessoal.repository.PostagemRepository;
 
 @RestController //essa classe se trata de um controlador
-@RequestMapping("/postagens") 
-@CrossOrigin(origins = "", allowedHeaders = "") //
+@RequestMapping("/postagem") 
+@CrossOrigin(origins = "*", allowedHeaders = "*") //
 public class PostagemController {
 	
 	@Autowired 
@@ -42,13 +40,7 @@ public class PostagemController {
 				.map(resposta -> ResponseEntity.ok(resposta))
 				.orElse(ResponseEntity.notFound().build());
 	}
-	/*Optional <Postagem> resposta = postagemRepository.findById(id);
-	if (resposta.isPresent())
-		return ResponseEntity.ok(resposta);
-	else
-		return ResponseEntity.notFound().build();*/
 		
-	
 
 @GetMapping("titulo/{titulo}")
 public ResponseEntity <List<Postagem>> getByTitulo(@PathVariable String titulo){

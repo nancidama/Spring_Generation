@@ -27,8 +27,9 @@ public class TemaContoller {
 	@Autowired 
 	private TemaRepository repository;
 	
-	@GetMapping //RETORNA RESPOSTA PARA O USUÁRIO = 200,400
-	public ResponseEntity<List<Tema>> getAll(){		return ResponseEntity.ok(repository.findAll());
+	@GetMapping 
+	public ResponseEntity<List<Tema>> getAll(){		
+		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
@@ -36,7 +37,7 @@ public class TemaContoller {
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/descricao/{descricao}")
+	@GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Tema>> getByName(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(nome));
 	}

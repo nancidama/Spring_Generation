@@ -28,7 +28,7 @@ public class UsuarioService {
 		}
 		
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
-		return Optional.ofNullable(usuarioRepository.save(usuario));
+		return Optional.of(usuarioRepository.save(usuario));
 	}
 	
 		public Optional<Usuario> atualizarUsuario(Usuario usuario) {
@@ -85,9 +85,9 @@ public class UsuarioService {
 
 	private String gerarBasicToken(String usuario, String senha) {
 
-		String token = usuario +  ":"  + senha;
-		byte [] tokenBase64 =  Base64.encodeBase64(token . getBytes( Charset.forName( " US-ASCII " )));
-		return  " Basico "  +  new  String (tokenBase64);
+		String token = usuario + ":" + senha;
+		byte [] tokenBase64 = Base64.encodeBase64(token.getBytes( Charset.forName("US-ASCII")));
+		return "Basico" + new String(tokenBase64);
 
 	}
 

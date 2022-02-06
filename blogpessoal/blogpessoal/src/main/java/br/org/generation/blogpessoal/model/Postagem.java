@@ -17,13 +17,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 @Entity // essa classe vai criar uma tabela no seu banco de dados
-@Table(name = "tb_postagens")
+@Table(name = "tb_postagem")
 public class Postagem {
 	
 	
 	@Id // Define que o atributo é uma ID, chave primária.
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // auto increment
-	private Long id; 
+	private long id; 
 	
 	@NotBlank(message = "O atributo título é Obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres.")
@@ -44,7 +44,7 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem") //ignorar as propriedades do tema
 	private Usuario usuario;
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
